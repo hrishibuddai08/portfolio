@@ -552,32 +552,7 @@ if (!reduce) {
 }
 gsap.from('.about__right', { opacity: 0, y: 30, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.about__words', start: 'center 80%' } });
 gsap.from('.value, .quality li', { opacity: 0, y: 40, stagger: 0.1, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.values', start: 'top 80%' } });
-gsap.from('.form, .details__item, .foot', { opacity: 0, y: 50, stagger: 0.08, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.contact__grid', start: 'top 82%' } });
-
-/* ───────── inquiry form (opens the visitor's mail app — no backend) ───────── */
-const form = $('#form'), msg = $('#formMsg');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const d = Object.fromEntries(new FormData(form));
-  const bad = [];
-  if (!d.name?.trim()) bad.push('name');
-  if (!/^\S+@\S+\.\S+$/.test(d.email || '')) bad.push('email');
-  if (!d.brief?.trim()) bad.push('brief');
-  $$('.f', form).forEach(f => f.classList.remove('is-bad'));
-  if (bad.length) {
-    bad.forEach(n => $(`[name="${n}"]`, form).closest('.f').classList.add('is-bad'));
-    msg.textContent = 'Please fill in your name, a valid email and a short brief.';
-    return;
-  }
-  const lines = [`Name: ${d.name}`, `Email: ${d.email}`];
-  if (d.company) lines.push(`Company: ${d.company}`);
-  lines.push(`Project type: ${d.type}`);
-  if (d.budget) lines.push(`Budget: ${d.budget}`);
-  if (d.timeline) lines.push(`Timeline: ${d.timeline}`);
-  lines.push('', 'What are we building?', d.brief);
-  location.href = `mailto:hrishibuddai@gmail.com?subject=${encodeURIComponent('Project inquiry — ' + d.type)}&body=${encodeURIComponent(lines.join('\n'))}`;
-  msg.textContent = 'Opening your email app with the inquiry filled in…';
-});
+gsap.from('.details__item, .foot', { opacity: 0, y: 50, stagger: 0.08, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.contact__grid', start: 'top 82%' } });
 
 /* ───────── cursor (mouse only) ───────── */
 if (finePointer) {
