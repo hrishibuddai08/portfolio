@@ -575,7 +575,7 @@ form.addEventListener('submit', e => {
   if (d.budget) lines.push(`Budget: ${d.budget}`);
   if (d.timeline) lines.push(`Timeline: ${d.timeline}`);
   lines.push('', 'What are we building?', d.brief);
-  location.href = `mailto:Hbuddai@gmail.com?subject=${encodeURIComponent('Project inquiry — ' + d.type)}&body=${encodeURIComponent(lines.join('\n'))}`;
+  location.href = `mailto:hrishibuddai@gmail.com?subject=${encodeURIComponent('Project inquiry — ' + d.type)}&body=${encodeURIComponent(lines.join('\n'))}`;
   msg.textContent = 'Opening your email app with the inquiry filled in…';
 });
 
