@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hrishitej — Website Developer</title>
+  <meta name="description" content="Hrishitej is a solo website developer. Design, animation and engineering handled end to end — fast, polished websites and web apps built to hold up under pressure.">
+  <meta name="theme-color" content="#f6f3ee">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d4143a'/%3E%3Cpath d='M18 14h9v14h10V14h9v36h-9V36H27v14h-9z' fill='%23fff'/%3E%3C/svg%3E">
+  <style>html{background:#f6f3ee}html:not(.ready) body{opacity:0}html.ready body{opacity:1;transition:opacity .35s}</style>
+  <script>setTimeout(function(){document.documentElement.classList.add('ready')},5000)</script>
+  <noscript><style>html:not(.ready) body{opacity:1}</style></noscript>
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="buddy" id="buddy" data-anchor="buddy" aria-hidden="true"><div class="buddy__bubble" id="buddyBubble"></div></div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"><span></span></div>
+  </div>
+
+  <!-- the paper opens completely: white sheet over a crimson sheet, torn through the name -->
+  <div class="pre" id="pre" aria-hidden="true">
+    <div class="pre__sheet pre__sheet--paper pre__sheet--top">
+      <svg class="torn" data-torn="bottom" data-h="90" data-amp="34" data-seed="11" style="color:#f6f3ee;--fiber:#d8d0c2"></svg>
+    </div>
+    <div class="pre__sheet pre__sheet--paper pre__sheet--bot">
+      <svg class="torn" data-torn="top" data-h="90" data-amp="34" data-seed="23" style="color:#f6f3ee;--fiber:#d8d0c2"></svg>
+    </div>
+  </div>
+
+  <div class="pre__cap" aria-hidden="true">HRISHITEJ ✺ WEBSITE DEVELOPER</div>
+
+  <a class="skip" href="#work">Skip to work</a>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" data-cursor="TOP" aria-label="Hrishitej — back to top"><i class="mark">H</i><span>HRISHITEJ</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#process">Process</a>
+      <a href="#studio">About</a>
+    </nav>
+    <a href="#contact" class="nav__cta">Start a project <b>↗</b></a>
+  </header>
+
+  <main>
+    <!-- ═════════ SCENE: hero → intro → tunnel, one continuous zoom ═════════ -->
+    <section class="scene" id="scene">
+
+      <!-- layer 1 · hero -->
+      <div class="L L1" id="L1">
+        <div class="topbar">
+          <span>Hrishitej — Website Developer</span>
+          <span>©2026</span>
+          <span>India · Working globally</span>
+        </div>
+
+        <div class="hero__stage" id="heroStage">
+          <h1 class="hero__title">
+            <span class="sr-only">I build websites that hold up under pressure.</span>
+            <span class="hl" aria-hidden="true">I BUILD</span>
+            <span class="hero__gap" id="heroGap" aria-hidden="true"></span>
+            <span class="hl hl--red" aria-hidden="true">WEBSITES</span>
+          </h1>
+          <div class="hero__label hero__label--l">Design / Build <i class="star">✺</i></div>
+          <div class="hero__label hero__label--r"><i class="star">✺</i> Animate / Ship</div>
+        </div>
+
+        <div class="hero__bottom" id="heroBottom">
+          <p class="hero__tag">THAT HOLD UP<br>UNDER PRESSURE.</p>
+          <p class="hero__sub">Design, animation and engineering — handled end to end by one website developer. Fewer handoffs, stronger sites.</p>
+          <div class="hero__cta">
+            <a class="pill" href="#contact" data-cursor="GO">Start a project <b>↘</b></a>
+            <a class="pill pill--ghost" href="#work" data-cursor="GO">Selected work <b>↗</b></a>
+          </div>
+        </div>
+      </div>
+      <div class="anchor anchor--hero" id="heroAnchor" data-anchor="hero"><div class="hi" id="hi" aria-hidden="true"><span>Hello, I am Hrishitej</span><i>👋</i></div></div>
+
+      <!-- layer 2 · intro -->
+      <div class="L L2" id="L2">
+        <h2 class="sr-only">One developer. Big product thinking.</h2>
+        <p class="intro__text" id="introText">One developer. Big product thinking. Design, animation and engineering in one pair of hands — built for founders and businesses that need fast, useful, dependable websites.</p>
+        <div class="intro__cols">
+          <div class="intro__col"><div class="intro__tag"><i class="star">✺</i> Disciplines</div><p><strong>Websites &amp; web apps</strong> — every layer of the build, one point of contact.</p></div>
+          <div class="intro__col"><div class="intro__tag"><i class="star">✺</i> Method</div><p><strong>Design, Build, Ship.</strong> Short loops, honest scope, working software early.</p></div>
+          <div class="intro__col"><div class="intro__tag"><i class="star">✺</i> India</div><p class="clock"><span id="clock">--:--</span></p></div>
+        </div>
+      </div>
+      <div class="anchor anchor--orbit" data-anchor="orbit"></div>
+
+      <!-- layer 3 · tunnel -->
+      <div class="L L3" id="L3" aria-label="How a website gets built">
+        <div class="tz__rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="tz__label"><i class="star">✺</i> One craft. One developer.</div>
+        <div class="tz__count" id="tzCount">01 / 04</div>
+        <div class="tz__word" aria-hidden="true">WEB</div>
+        <div class="tz__word" aria-hidden="true">DESIGN</div>
+        <div class="tz__word" aria-hidden="true">BUILD</div>
+        <div class="tz__word" aria-hidden="true">SHIP</div>
+        <div class="tz__caps">
+          <p class="tz__cap"><b>Web.</b> Product-grade websites, platforms and dashboards.</p>
+          <p class="tz__cap"><b>Design.</b> Interfaces and motion with one coherent visual language.</p>
+          <p class="tz__cap"><b>Build.</b> Clean, fast, maintainable front-end and back-end code.</p>
+          <p class="tz__cap"><b>Ship.</b> Deployed, tested and handed over with documentation.</p>
+        </div>
+      </div>
+      <div class="anchor anchor--tcoin" data-anchor="tcoin"></div>
+    </section>
+
+    <!-- ═════════ CAPABILITIES: fold + zoom ═════════ -->
+    <section class="caps" id="capabilities">
+      <svg class="torn caps__torn" data-torn="top" data-h="110" data-amp="46" data-seed="81" style="color:#f6f3ee;--fiber:#d8d0c2"></svg>
+      <header class="caps__head">
+        <div class="eyebrow"><i class="star">✺</i> Capabilities</div>
+        <h2 class="mask"><span class="rv">ONE DEVELOPER.</span></h2>
+        <h2 class="mask"><span class="rv"><em>EVERY WEB LAYER.</em></span></h2>
+      </header>
+
+      <div class="caps__stack">
+        <article class="cap" style="--i:0;--c:#d4143a;--tc:#fff;--fiber:#f08aa0">
+          <svg class="torn cap__torn" data-torn="top" data-h="60" data-amp="22" data-seed="41"></svg>
+          <div class="cap__num">01</div>
+          <div class="cap__body">
+            <h3>Websites &amp; landing pages</h3>
+            <p>Fast, responsive, animated websites that communicate a business properly — built to be used, not just admired.</p>
+            <ul class="cap__tags"><li>Responsive</li><li>Animation</li><li>SEO-ready</li></ul>
+          </div>
+          <svg class="cap__art" viewBox="0 0 200 200" aria-hidden="true"><rect x="16" y="34" width="168" height="132" rx="10"/><path d="M16 62h168"/><circle cx="34" cy="48" r="4"/><circle cx="50" cy="48" r="4"/><rect x="30" y="78" width="52" height="72" rx="4"/><rect x="94" y="78" width="78" height="30" rx="4"/><rect x="94" y="120" width="78" height="30" rx="4"/></svg>
+        </article>
+
+        <article class="cap" style="--i:1;--c:#121214;--tc:#f6f3ee;--fiber:#3d3d44">
+          <svg class="torn cap__torn" data-torn="top" data-h="60" data-amp="22" data-seed="42"></svg>
+          <div class="cap__num cap__num--r">02</div>
+          <div class="cap__body">
+            <h3>Interface design</h3>
+            <p>Layouts and interfaces that make complex pages feel obvious — clear on the first visit, consistent on the thousandth.</p>
+            <ul class="cap__tags"><li>Layout</li><li>Design systems</li><li>Visual language</li></ul>
+          </div>
+          <svg class="cap__art cap__art--r" viewBox="0 0 200 200" aria-hidden="true"><circle cx="70" cy="80" r="44"/><rect x="88" y="78" width="80" height="80" rx="6"/><path d="M30 170C60 120 110 190 170 140"/><circle cx="30" cy="170" r="6"/><circle cx="170" cy="140" r="6"/></svg>
+        </article>
+
+        <article class="cap" style="--i:2;--c:#ece5d8;--tc:#121214;--fiber:#fff">
+          <svg class="torn cap__torn" data-torn="top" data-h="60" data-amp="22" data-seed="43"></svg>
+          <div class="cap__num cap__num--r">03</div>
+          <div class="cap__body">
+            <h3>Web applications</h3>
+            <p>Product-grade web platforms, dashboards and e-commerce — engineered for real users, real data and real growth.</p>
+            <ul class="cap__tags"><li>Platforms</li><li>Dashboards</li><li>E-commerce</li></ul>
+          </div>
+          <svg class="cap__art cap__art--r" viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="40" rx="50" ry="16"/><path d="M50 40v30c0 9 22 16 50 16s50-7 50-16V40"/><path d="M50 70v30c0 9 22 16 50 16s50-7 50-16V70"/><path d="M100 118v28M60 170h80M60 170v-10M140 170v-10"/><circle cx="60" cy="176" r="6"/><circle cx="140" cy="176" r="6"/></svg>
+        </article>
+        <div class="caps__hud" aria-hidden="true"><div class="caps__pill"><span id="capCount">01 / 03</span><span class="caps__dots"><i class="on"></i><i></i><i></i></span></div></div>
+      </div>
+    </section>
+
+    <!-- ═════════ PRINCIPLES: horizontal parallax ═════════ -->
+    <section class="stats" id="principles" aria-label="Principles">
+      <div class="st__row st__row--a" aria-hidden="true"><div class="st__track st__out"><span>LESS THEATRE ✺ MORE OUTCOMES ✺ LESS THEATRE ✺ MORE OUTCOMES ✺ LESS THEATRE ✺ MORE OUTCOMES ✺ </span></div></div>
+      <div class="st__row st__row--b">
+        <div class="st__track st__cards" id="stCards">
+          <div class="stat"><div class="stat__n"><span data-count="3">0</span></div><h3>Core services</h3><p>Sites, design, web apps.</p></div>
+          <div class="stat"><div class="stat__n"><span data-count="60">0</span>fps</div><h3>Interaction target</h3><p>Smooth, always.</p></div>
+          <div class="stat"><div class="stat__n"><span data-count="99.9" data-dec="1">0</span>%</div><h3>Reliability mindset</h3><p>A mindset, not a promise.</p></div>
+          <div class="stat"><div class="stat__n"><span data-count="1">0</span></div><h3>Person, design through deployment</h3><p>No hand-offs.</p></div>
+        </div>
+      </div>
+      <div class="st__row st__row--c" aria-hidden="true"><div class="st__track"><span>PRINCIPLES, NOT GUARANTEES ✺ PRINCIPLES, NOT GUARANTEES ✺ PRINCIPLES, NOT GUARANTEES ✺ PRINCIPLES, NOT GUARANTEES ✺ </span></div></div>
+      <p class="stats__note">Principles and targets — not reported results or guarantees.</p>
+    </section>
+
+    <!-- ═════════ WORK: colour bands, one project each ═════════ -->
+    <section class="work" id="work" aria-label="Selected work">
+      <header class="wk__head">
+        <div class="eyebrow"><i class="star">✺</i> Selected work · live</div>
+        <h2 class="mask"><span class="rv">PROOF OVER <em>PROMISES.</em></span></h2>
+        <p>Real, shipping websites. Tap any card to open the original.</p>
+      </header>
+      <div id="wkBands"></div>
+    </section>
+
+    <!-- ═════════ TAPE ═════════ -->
+    <section class="strip" aria-label="How I work">
+      <div class="strip__tape">
+        <div class="strip__track">
+          <span>WIREFRAMES FIRST ✺ PIXELS MATTER ✺ SHIP IT ✺ 200 OK ✺ TAP, SWIPE, DONE ✺ WIREFRAMES FIRST ✺ PIXELS MATTER ✺ SHIP IT ✺ 200 OK ✺ TAP, SWIPE, DONE ✺ </span>
+          <span aria-hidden="true">WIREFRAMES FIRST ✺ PIXELS MATTER ✺ SHIP IT ✺ 200 OK ✺ TAP, SWIPE, DONE ✺ WIREFRAMES FIRST ✺ PIXELS MATTER ✺ SHIP IT ✺ 200 OK ✺ TAP, SWIPE, DONE ✺ </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ PROCESS: the flight path ═════════ -->
+    <section class="journey" id="process">
+      <header class="journey__head">
+        <div class="eyebrow"><i class="star">✺</i> Process</div>
+        <h2 class="mask"><span class="rv">IDEA TO LIVE.</span></h2>
+        <h2 class="mask"><span class="rv"><em>FIVE STOPS.</em></span></h2>
+        <p>A practical route, no ceremony. Scroll — watch a website get built.</p>
+      </header>
+      <div class="build" id="build">
+        <div class="build__pin">
+          <ol class="build__steps" id="buildSteps" aria-label="Process">
+            <li class="bs" data-i="0"><b>01</b><div><h3>FRAME</h3><div class="bs__more"><div><p>Clarify the business problem, the users, the constraints and what success actually looks like.</p><span>Problem · Users · Success criteria</span></div></div></div></li>
+            <li class="bs" data-i="1"><b>02</b><div><h3>SHAPE</h3><div class="bs__more"><div><p>Map flows and page structure, then find the smallest site that proves the point.</p><span>Flows · Structure · Smallest proof</span></div></div></div></li>
+            <li class="bs" data-i="2"><b>03</b><div><h3>DESIGN</h3><div class="bs__more"><div><p>Turn the structure into an interface with one coherent visual language.</p><span>Interface · Type · Colour · Motion</span></div></div></div></li>
+            <li class="bs" data-i="3"><b>04</b><div><h3>ENGINEER</h3><div class="bs__more"><div><p>Build in short loops, with testing and review baked into every one.</p><span>Short loops · Testing · Review</span></div></div></div></li>
+            <li class="bs" data-i="4"><b>05</b><div><h3>SHIP</h3><div class="bs__more"><div><p>Deploy, observe, improve — and hand over documentation so you're never locked in.</p><span>Deploy · Observe · Hand over</span></div></div></div></li>
+            <li class="build__rail" aria-hidden="true"><i id="buildFill"></i></li>
+          </ol>
+
+          <div class="build__stage" id="bwWrap" aria-hidden="true">
+            <div class="bw" id="bw" data-stage="0">
+              <div class="bw__bar"><i></i><i></i><i></i>
+                <span class="bw__url"><u class="bw__lock">&#128274;</u><em id="bwUrl">yourbrand.com</em></span>
+                <span class="bw__live">&#9679; LIVE</span>
+              </div>
+              <div class="bw__view" id="bwView">
+                <div class="m m-nav"><span class="m-logo"></span><span class="m-links"><i></i><i></i><i></i></span><span class="m-cta"></span></div>
+                <div class="m m-hero">
+                  <div class="m-copy"><h4>Your product, finally clear.</h4><p>Fast, focused and built to convert.</p><span class="m-btn">Get started</span></div>
+                  <div class="m-art"><i></i><i></i></div>
+                </div>
+                <div class="m-cards">
+                  <div class="m m-card"><b></b><span></span><span></span></div>
+                  <div class="m m-card"><b></b><span></span><span></span></div>
+                  <div class="m m-card"><b></b><span></span><span></span></div>
+                </div>
+                <div class="m m-foot"></div>
+
+                <div class="bw__note bw__note--a">who is it for?</div>
+                <div class="bw__note bw__note--b">one clear goal</div>
+                <div class="bw__note bw__note--c">what does success look like?</div>
+                <div class="bw__tag bw__tag--a">header</div>
+                <div class="bw__tag bw__tag--b">hero</div>
+                <div class="bw__tag bw__tag--c">cards &times; 3</div>
+                <div class="bw__tag bw__tag--d">footer</div>
+
+                <div class="bw__code"><pre>
+<span style="--n:0"><i class="k">&lt;section</i> <i class="a">class</i>=<i class="s">"hero"</i><i class="k">&gt;</i></span>
+<span style="--n:1">  <i class="k">&lt;h1&gt;</i>Your product, finally clear.<i class="k">&lt;/h1&gt;</i></span>
+<span style="--n:2">  <i class="k">&lt;Button</i> <i class="a">href</i>=<i class="s">"#start"</i><i class="k">/&gt;</i></span>
+<span style="--n:3"><i class="k">&lt;/section&gt;</i></span>
+<span style="--n:4"><i class="c">// responsive &middot; accessible &middot; fast</i></span>
+<span style="--n:5"><i class="g">&#10003;</i> 24 tests passed</span>
+<span style="--n:6"><i class="g">$</i> npm run build<b class="caret"></b></span></pre></div>
+
+                <div class="bw__scores"><span><b>100</b>Perf</span><span><b>100</b>A11y</span><span><b>100</b>SEO</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ ABOUT ═════════ -->
+    <div class="frame" id="studio">
+      <section class="studio">
+        <div class="eyebrow"><i class="star">✺</i> About</div>
+        <div class="about__vertical" aria-hidden="true">HRISHITEJ 2026</div>
+
+        <h2 class="about__words">
+          <span class="mask"><span class="rv ab--red">SMALL BY</span></span>
+          <span class="mask"><span class="rv ab--red">DESIGN.</span></span>
+          <span class="mask"><span class="rv ab--ink">SERIOUS</span></span>
+          <span class="mask"><span class="rv ab--ink">BY DEFAULT.</span></span>
+          <span class="anchor anchor--compass" data-anchor="compass"></span>
+        </h2>
+
+        <div class="tape tape--a"><div class="tape__in"><span>ONE DEVELOPER ✺ ONE DEVELOPER ✺ ONE DEVELOPER ✺ ONE DEVELOPER ✺ </span></div></div>
+        <div class="tape tape--b"><div class="tape__in"><span>DESIGN ✺ BUILD ✺ SHIP ✺ DESIGN ✺ BUILD ✺ SHIP ✺ </span></div></div>
+
+        <p class="about__right">Hrishitej is a solo website developer. I stay close to the work, keep handoffs at zero, and choose durable solutions over fashionable complexity.</p>
+      </section>
+
+      <svg class="torn studio__div" data-torn="top" data-h="70" data-amp="26" data-seed="61" style="color:#d4143a;--fiber:#f08aa0"></svg>
+
+      <section class="values">
+        <div class="values__grid">
+          <div class="value"><b>01</b><h3>One person, whole product</h3><p>Design, animation and engineering live in one head — so decisions are made once, not relayed.</p></div>
+          <div class="value"><b>02</b><h3>Close to the work</h3><p>You talk to the person building your product. No account layers, no telephone game.</p></div>
+          <div class="value"><b>03</b><h3>Durable over fashionable</h3><p>Boring where it should be, bold where it counts. Systems chosen to last, not to trend.</p></div>
+        </div>
+        <ul class="quality" aria-label="Quality standards">
+          <li>Fast by default</li><li>Secure foundations</li><li>Clear documentation</li><li>Maintainable systems</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- ═════════ CONTACT ═════════ -->
+    <section class="contact" id="contact">
+      <svg class="torn contact__torn" data-torn="top" data-h="120" data-amp="50" data-seed="31" style="color:#d4143a;--fiber:#f08aa0"></svg>
+      <div class="contact__body">
+        <p class="eyebrow eyebrow--w"><i class="star">✺</i> Start a project</p>
+        <h2 class="contact__title">
+          <span class="mask"><span class="rv">HAVE SOMETHING</span></span>
+          <span class="mask"><span class="rv">WORTH BUILDING?</span></span>
+          <span class="mask"><span class="rv ct--ink">MAKE IT REAL.</span></span>
+        </h2>
+
+        <div class="contact__grid">
+          <form class="form" id="form" novalidate>
+            <div class="form__title">Project inquiry</div>
+            <label class="f"><span>Name</span><input name="name" autocomplete="name" required></label>
+            <label class="f"><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>
+            <label class="f"><span>Company <small>(optional)</small></span><input name="company" autocomplete="organization"></label>
+            <label class="f"><span>Project type</span>
+              <select name="type">
+                <option>Website / landing page</option><option>Web application</option><option>E-commerce store</option>
+                <option>Interface design</option><option>Website redesign</option><option>Not sure yet</option>
+              </select>
+            </label>
+            <label class="f f--wide"><span>What are you building?</span><textarea name="brief" rows="4" required></textarea></label>
+            <label class="f"><span>Budget <small>(optional)</small></span>
+              <select name="budget"><option value="">—</option><option>Under ₹5L</option><option>₹5L–15L</option><option>₹15L–40L</option><option>₹40L+</option></select>
+            </label>
+            <label class="f"><span>Timeline <small>(optional)</small></span>
+              <select name="timeline"><option value="">—</option><option>Flexible</option><option>Within a month</option><option>1–3 months</option><option>3–6 months</option><option>6+ months</option></select>
+            </label>
+            <div class="form__foot">
+              <button class="pill pill--dark" type="submit">Send inquiry <b>↗</b></button>
+              <p id="formMsg" role="status">Your details are used only to reply to this inquiry.</p>
+            </div>
+          </form>
+
+          <aside class="details" aria-label="Contact details">
+            <div class="details__item"><span>Name</span><p>Hrishitej Buddai</p></div>
+            <div class="details__item"><span>Email</span><a href="mailto:Hbuddai@gmail.com" data-cursor="MAIL">Hbuddai@gmail.com</a></div>
+            <div class="details__item"><span>Phone</span><a href="tel:+919381233911">+91 93812 33911</a></div>
+            <div class="details__item"><span>WhatsApp</span><a href="https://wa.me/919381233911" target="_blank" rel="noopener">+91 93812 33911</a></div>
+            <div class="details__item"><span>Location</span><p>India · Working globally</p></div>
+            </aside>
+        </div>
+
+        <footer class="foot">
+          <span>Solo website developer · India</span>
+          <span>© 2026 Hrishitej Buddai</span>
+          <a href="#top" class="foot__top" data-cursor="TOP">Back to top ↑</a>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

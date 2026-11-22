@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen &amp; Co. — Podcast growth studio</title>
+<meta name="description" content="Strategy, creative and promotion for podcasts and creators who want to go further.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F4F9;
+  --ink:#0B1030;
+  --ink-2:#3a4160;
+  --blue:#2F3AE0;
+  --blue-d:#1f29b8;
+  --night:#0d1019;
+  --dark:0;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --cond:'Archivo Narrow','Arial Narrow',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:italic}
+
+/* ───────── nav ───────── */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:50;height:84px;padding:0 3.2vw;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  color:color-mix(in srgb,#fff calc(var(--dark)*100%),var(--ink));
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),background .3s;
+}
+.nav.hide{transform:translateY(-110%)}
+.nav.solid{background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.logo{font-family:var(--serif);font-size:30px;letter-spacing:-.01em;line-height:1}
+.links{display:flex;gap:clamp(24px,3.4vw,56px)}
+.links a{
+  font-weight:500;font-size:16px;padding-bottom:7px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M0 4.5Q50 .5 100 4.5' stroke='%232f3ae0' stroke-width='2' fill='none' vector-effect='non-scaling-stroke' stroke-linecap='round'/%3E%3C/svg%3E") left bottom/100% 6px no-repeat;
+  transition:background-size .3s,opacity .2s;
+}
+.links a:hover{background-size:0% 6px;background-position:right bottom}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;
+  font-weight:600;font-size:17px;padding:17px 30px;border-radius:999px;
+  box-shadow:0 14px 26px -12px rgba(47,58,224,.7);transition:transform .25s,background .25s;
+}
+.btn svg{width:17px;height:17px;transition:transform .25s}
+.btn:hover{background:var(--blue-d);transform:translateY(-2px)}
+.btn:hover svg{transform:translateX(3px)}
+.btn.sm{font-size:14.5px;padding:11px 20px;justify-self:end;gap:8px}
+.btn.sm svg{width:14px;height:14px}
+
+/* ───────── pinned stages ───────── */
+.pin1{height:430vh;position:relative}
+.pin2{height:380vh;position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.s1{background:var(--bg)}
+.s2{background:var(--bg)}
+
+/* hero */
+.hero-ui{position:absolute;inset:0;will-change:transform,opacity}
+.hero-cards{position:absolute;inset:0;z-index:1}
+.statue{position:absolute;z-index:2;left:-3.5vw;bottom:-4vh;width:57vw;max-width:1100px;pointer-events:none;
+  filter:drop-shadow(0 30px 40px rgba(20,30,160,.25))}
+.statue svg{display:block;width:100%;height:auto;overflow:visible}
+.hero-copy h1{
+  position:absolute;z-index:3;top:calc(14vh - 1vw);right:3.6vw;text-align:right;
+  font-family:var(--serif);font-weight:400;font-size:clamp(46px,5.9vw,118px);line-height:1.04;letter-spacing:-.035em;
+}
+.hero-copy h1 em{letter-spacing:-.04em}
+.hero-copy p{
+  position:absolute;z-index:3;right:5.2vw;top:68vh;width:clamp(190px,14vw,260px);
+  font-size:clamp(15px,1.05vw,19px);line-height:1.55;color:var(--ink-2);
+}
+.hero-copy .btn{position:absolute;z-index:3;right:3.6vw;bottom:8vh}
+.badge{position:absolute;z-index:3;left:2.2vw;bottom:4.5vh;width:clamp(110px,9vw,150px);aspect-ratio:1}
+.badge svg{width:100%;height:100%;display:block}
+.badge .ring{transform-origin:50% 50%;animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.badge text{font:600 10.4px var(--sans);letter-spacing:.2em;fill:var(--ink)}
+
+/* cards */
+.card{
+  --cw:clamp(150px,11.6vw,215px);
+  position:absolute;left:0;top:0;width:var(--cw);aspect-ratio:4/5;border-radius:calc(var(--cw)*.075);
+  overflow:hidden;color:#fff;will-change:transform;
+  box-shadow:0 22px 34px -14px rgba(18,28,150,.55),0 2px 0 rgba(255,255,255,.12) inset;
+  contain:layout paint;
+}
+.card .t{
+  position:absolute;left:9%;top:7%;z-index:2;font:700 calc(var(--cw)*.16)/.93 var(--cond);
+  text-transform:uppercase;letter-spacing:-.005em;
+}
+.card .art{position:absolute;display:block}
+.art{--c1:#9aa6ff;--c2:#1b2596;--c3:#2f3bd0;--face:#7482ff;--hair:#151d8a}
+.c-blue{background:linear-gradient(165deg,#4a58f0 0%,#2531d8 100%)}
+.c-peri{background:linear-gradient(160deg,#7b87f4 0%,#4350e2 100%)}
+.c-navy{background:#0a1038}
+.c-sky{background:linear-gradient(180deg,#c6cfff 0%,#8998f6 100%)}
+.card .mic{width:62%;right:-4%;bottom:-8%;transform:rotate(14deg)}
+.card .woman{width:92%;left:4%;bottom:-2%}
+.c-mic .mic{width:90%;left:5%;right:auto;bottom:-14%;transform:rotate(12deg)}
+.c-onair .desk{
+  position:absolute;left:-8%;right:-8%;bottom:-4%;height:46%;transform:perspective(200px) rotateX(24deg);transform-origin:50% 100%;
+  background:
+    radial-gradient(circle,#b8c1ff 0 2.6px,transparent 3.4px) 0 0/16px 16px,
+    linear-gradient(#1a2390,#121a74);
+  border-radius:8px;opacity:.95;
+}
+.c-onair .mic{width:36%;right:12%;bottom:22%;transform:rotate(-24deg);opacity:.9}
+.c-onair .t{font-size:calc(var(--cw)*.27);line-height:.88}
+.c-ideas .woman{width:74%;left:auto;right:-4%;bottom:-6%;transform:scaleX(-1)}
+.c-woman{background:linear-gradient(165deg,#8e9bff 0%,#3c49e6 100%)}
+.c-woman .woman{width:116%;left:-6%;bottom:-14%}
+.c-woman .mic{width:30%;right:2%;bottom:26%;transform:rotate(-34deg)}
+.c-creator .mic{width:66%;right:-8%;bottom:-12%;transform:rotate(16deg)}
+.c-small .t{font-size:calc(var(--cw)*.19);line-height:.9;left:8.5%;top:9%}
+.mini-wave{position:absolute;left:9%;bottom:7%;height:calc(var(--cw)*.14);display:flex;align-items:center;gap:calc(var(--cw)*.012)}
+.mini-wave i,.wave i{display:block;width:calc(var(--cw)*.014);background:currentColor;border-radius:2px;opacity:.9}
+.wave{position:absolute;left:8.5%;right:8.5%;bottom:8%;height:calc(var(--cw)*.24);display:flex;align-items:center;justify-content:space-between}
+.card .shine{position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.18),transparent 40%);pointer-events:none}
+.sky-svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* fly-through layer */
+.fly{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0}
+.fly .card{--cw:clamp(150px,15vw,262px);box-shadow:0 30px 50px -18px rgba(0,0,0,.7)}
+
+/* stage 2 */
+.marquee{
+  position:absolute;left:0;top:50%;transform:translate3d(100vw,-50%,0);z-index:1;white-space:nowrap;
+  font-family:var(--serif);font-size:clamp(64px,9.4vw,176px);line-height:1;letter-spacing:-.035em;color:var(--ink);will-change:transform;
+}
+.marquee em{letter-spacing:-.04em}
+.scene{position:absolute;inset:0;z-index:2;display:grid;place-items:center;perspective:1500px;pointer-events:none;opacity:0}
+.box{
+  --w:clamp(210px,23vw,390px);--h:calc(var(--w)*1.3);--d:calc(var(--w)*.15);
+  position:relative;width:var(--w);height:var(--h);transform-style:preserve-3d;will-change:transform;
+}
+.face{position:absolute;overflow:hidden;backface-visibility:hidden}
+.f-front{inset:0;transform:translateZ(calc(var(--d)/2));border-radius:12px 14px 14px 12px;
+  background:linear-gradient(180deg,#6573cc 0%,#5361bd 100%);
+  box-shadow:0 40px 60px -20px rgba(31,41,184,.45);text-align:center;color:#fff}
+.f-front small{position:absolute;top:8.5%;left:0;right:0;font:600 clamp(12px,1.05vw,17px) var(--sans);opacity:.95}
+.f-front b{position:absolute;top:12%;left:0;right:0;font:400 clamp(48px,5.3vw,92px)/1 var(--serif);letter-spacing:-.02em;font-weight:400}
+.f-front b span{font-weight:400;opacity:.8}
+.f-front .mic{position:absolute;left:25%;width:50%;bottom:5%;--c1:#a2aeff;--c2:#27338f;--c3:#4150bd}
+.f-left{width:var(--d);height:100%;left:calc(50% - var(--d)/2);transform:rotateY(-90deg) translateZ(calc(var(--w)/2));
+  background:#2230df}
+.f-left svg{position:absolute;left:-190%;top:30%;width:480%;height:auto}
+.f-left span{position:absolute;top:7%;left:50%;transform:translateX(-50%) rotate(90deg);transform-origin:50% 50%;
+  font:600 11px var(--sans);white-space:nowrap;color:#fff;opacity:.9;margin-top:38px}
+.f-right{width:var(--d);height:100%;left:calc(50% - var(--d)/2);transform:rotateY(90deg) translateZ(calc(var(--w)/2));background:#3a47d6}
+.f-back{inset:0;transform:rotateY(180deg) translateZ(calc(var(--d)/2));background:#3441cf}
+
+/* process */
+.process{position:relative;padding:0 0 0}
+.p-inner{position:relative;width:100%;aspect-ratio:1600/1700;container-type:inline-size}
+.p-inner svg.curve{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.curve path{fill:none;stroke:var(--blue);stroke-width:30;stroke-linecap:butt;stroke-linejoin:round}
+.curve path.ghost{stroke:rgba(47,58,224,.08)}
+.node{
+  position:absolute;width:4.1cqw;aspect-ratio:1;border-radius:50%;background:var(--ink);color:#fff;
+  display:grid;place-items:center;font:600 clamp(11px,1.35cqw,22px) var(--sans);transform:translate(-50%,-50%) scale(.2);opacity:0;
+  transition:transform .55s cubic-bezier(.2,1.4,.4,1),opacity .35s;z-index:2;
+}
+.node.on{transform:translate(-50%,-50%) scale(1);opacity:1}
+.step{position:absolute;width:26cqw;opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.step.on{opacity:1;transform:none}
+.step.r{text-align:right}
+.step h3{font:400 clamp(26px,3.15cqw,58px)/1.05 var(--serif);letter-spacing:-.02em;margin-bottom:1.1cqw}
+.step p{font-size:clamp(13px,1.2cqw,21px);line-height:1.55;color:var(--ink-2)}
+footer{padding:2cqw 24px 56px;text-align:center;font-size:15px;color:#5d6485}
+.p-foot{position:absolute;left:0;right:0;bottom:3.5%;text-align:center;font-size:clamp(12px,1.05cqw,17px);color:#5d6485}
+
+@media (max-width:760px){
+  .nav{grid-template-columns:1fr auto;height:68px}
+  .links{display:none}
+  .logo{font-size:25px}
+  .btn.sm{font-size:13.5px;padding:10px 16px}
+  .hero-copy h1{top:11vh;right:5vw;left:5vw;font-size:clamp(40px,12.6vw,64px)}
+  .statue{width:132vw;left:-30vw;bottom:-2vh}
+  .hero-copy p{right:5vw;top:auto;bottom:15vh;width:46vw;font-size:14px}
+  .hero-copy .btn{right:5vw;bottom:5vh;font-size:15px;padding:14px 22px}
+  .badge{left:4vw;bottom:3vh;width:84px}
+  .card{--cw:34vw}
+  .fly .card{--cw:42vw}
+  .marquee{font-size:21vw}
+  .box{--w:62vw}
+  .p-inner{aspect-ratio:auto;container-type:normal;padding:90px 28px 20px}
+  .p-inner svg.curve{display:none}
+  .p-inner::before{content:"";position:absolute;left:44px;top:110px;bottom:140px;width:8px;background:var(--blue);border-radius:4px}
+  .node,.step{position:relative;left:auto!important;top:auto!important;right:auto!important;transform:none;opacity:1}
+  .node{width:40px;font-size:15px;margin:0 0 -40px 25px;transform:none}
+  .node.on{transform:none}
+  .step{width:auto;margin:0 0 54px 92px;text-align:left!important;transform:none;min-height:40px}
+  .step h3{font-size:34px}
+  .step p{font-size:16px}
+  .p-foot{position:relative;margin-top:30px;font-size:14px;bottom:auto}
+}
+@media (prefers-reduced-motion:reduce){.badge .ring{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ───────── shared SVG art ───────── -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="gSkin" cx=".38" cy=".3" r=".9">
+      <stop offset="0" stop-color="#7a88ff"/><stop offset=".38" stop-color="#3b47f1"/>
+      <stop offset=".78" stop-color="#1d27c2"/><stop offset="1" stop-color="#111987"/>
+    </radialGradient>
+    <linearGradient id="gTape" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6470ff"/><stop offset="1" stop-color="#2f3bee"/>
+    </linearGradient>
+    <linearGradient id="gNeck" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#18209e"/><stop offset=".5" stop-color="#2a35d8"/><stop offset="1" stop-color="#141c8e"/>
+    </linearGradient>
+    <clipPath id="micClip"><rect x="62" y="10" width="76" height="160" rx="38"/></clipPath>
+  </defs>
+
+  <symbol id="mic" viewBox="0 0 200 320">
+    <rect x="94" y="190" width="12" height="130" fill="var(--c2)"/>
+    <path d="M44 112v38a56 56 0 0 0 112 0v-38" fill="none" stroke="var(--c2)" stroke-width="9" stroke-linecap="round"/>
+    <rect x="62" y="10" width="76" height="160" rx="38" fill="var(--c1)"/>
+    <g clip-path="url(#micClip)" stroke="var(--c3)" stroke-width="2.4" opacity=".55">
+      <path d="M50 28h100M50 44h100M50 60h100M50 76h100M50 92h100M50 108h100M50 124h100M50 140h100M50 156h100"/>
+      <path d="M80 0v180M96 0v180M112 0v180M128 0v180"/>
+    </g>
+    <rect x="72" y="22" width="12" height="136" rx="6" fill="#fff" opacity=".22"/>
+    <rect x="62" y="116" width="76" height="14" fill="var(--c2)" opacity=".55"/>
+  </symbol>
+
+  <symbol id="woman" viewBox="0 0 200 260">
+    <path d="M6 260c6-58 40-70 94-72s88 14 94 72z" fill="var(--c2)"/>
+    <rect x="84" y="140" width="32" height="56" rx="10" fill="var(--face)" opacity=".85"/>
+    <g fill="var(--hair)">
+      <circle cx="58" cy="74" r="34"/><circle cx="100" cy="46" r="40"/><circle cx="142" cy="74" r="34"/>
+      <circle cx="46" cy="112" r="26"/><circle cx="154" cy="112" r="26"/><circle cx="100" cy="82" r="48"/>
+      <circle cx="72" cy="40" r="22"/><circle cx="128" cy="40" r="22"/>
+    </g>
+    <ellipse cx="100" cy="112" rx="37" ry="47" fill="var(--face)"/>
+    <path d="M78 100q9-6 18 0M104 100q9-6 18 0" stroke="var(--hair)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M90 138q10 7 20 0" stroke="var(--hair)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M40 112C40 40 66 22 100 22s60 18 60 90" fill="none" stroke="var(--c2)" stroke-width="10" stroke-linecap="round"/>
+    <rect x="28" y="94" width="22" height="46" rx="10" fill="var(--c2)"/>
+    <rect x="150" y="94" width="22" height="46" rx="10" fill="var(--c2)"/>
+  </symbol>
+
+  <!-- the taped-up bust -->
+  <symbol id="bust" viewBox="0 0 900 820" overflow="visible"><clipPath id="bustClip"><path d="M40 840C80 740 200 704 370 682L650 672C790 692 870 752 920 840Z"/><path d="M404 500C398 580 392 640 372 704L664 704C654 640 644 590 632 536Z"/><path d="M290 250C285 120 370 50 480 50 590 50 660 120 668 220 672 260 680 290 690 310L702 340C714 372 724 392 714 408 702 418 688 420 678 418 678 440 686 452 682 462 688 480 690 500 676 520 662 548 622 566 572 574 502 585 422 560 387 510 342 460 302 380 298 320 293 290 291 270 290 250Z"/><circle cx="330" cy="206" r="44"/><circle cx="330" cy="142" r="48"/><circle cx="376" cy="96" r="52"/><circle cx="442" cy="66" r="54"/><circle cx="512" cy="56" r="56"/><circle cx="582" cy="72" r="52"/><circle cx="636" cy="108" r="46"/><circle cx="664" cy="162" r="38"/><circle cx="654" cy="204" r="26"/><circle cx="402" cy="152" r="50"/><circle cx="484" cy="122" r="55"/><circle cx="562" cy="134" r="50"/><circle cx="612" cy="172" r="34"/></clipPath>
+    <path d="M40 840C80 740 200 704 370 682L650 672C790 692 870 752 920 840Z" fill="url(#gSkin)"/>
+    <path d="M404 500C398 580 392 640 372 704L664 704C654 640 644 590 632 536Z" fill="url(#gNeck)"/>
+    <path d="M290 250C285 120 370 50 480 50 590 50 660 120 668 220 672 260 680 290 690 310L702 340C714 372 724 392 714 408 702 418 688 420 678 418 678 440 686 452 682 462 688 480 690 500 676 520 662 548 622 566 572 574 502 585 422 560 387 510 342 460 302 380 298 320 293 290 291 270 290 250Z" fill="url(#gSkin)"/>
+    <g fill="url(#gSkin)" stroke="#1a22ae" stroke-opacity=".5" stroke-width="3">
+      <circle cx="330" cy="206" r="44"/><circle cx="330" cy="142" r="48"/><circle cx="376" cy="96" r="52"/>
+      <circle cx="442" cy="66" r="54"/><circle cx="512" cy="56" r="56"/><circle cx="582" cy="72" r="52"/>
+      <circle cx="636" cy="108" r="46"/><circle cx="664" cy="162" r="38"/><circle cx="654" cy="204" r="26"/>
+      <circle cx="402" cy="152" r="50"/><circle cx="484" cy="122" r="55"/><circle cx="562" cy="134" r="50"/><circle cx="612" cy="172" r="34"/>
+    </g>
+    <ellipse cx="398" cy="346" rx="22" ry="38" fill="#2230d6" stroke="#121a90" stroke-width="3"/>
+    <path d="M640 330c36 22 58 56 60 80" stroke="#8c98ff" stroke-opacity=".55" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M626 470q38 10 56-8" stroke="#141c9a" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M560 300c20 90 10 190-30 250" stroke="#fff" stroke-opacity=".10" stroke-width="30" fill="none" stroke-linecap="round"/>
+    <g clip-path="url(#bustClip)"><g font-family="Archivo Narrow, Arial Narrow, sans-serif" font-weight="700" font-style="italic" font-size="42" fill="#fff" letter-spacing="1.5">
+      <g transform="rotate(-15 520 250)">
+        <rect x="-140" y="222" width="1200" height="54" fill="url(#gTape)"/>
+        <rect x="-140" y="222" width="1200" height="4" fill="#fff" opacity=".3"/>
+        <rect x="-140" y="272" width="1200" height="4" fill="#0a1180" opacity=".35"/>
+        <text x="80" y="262">SPONSORED</text><text x="350" y="262">SPONSORED</text><text x="620" y="262">SPONSORED</text>
+      </g>
+      <g transform="rotate(-11 520 420)">
+        <rect x="-140" y="396" width="1200" height="50" fill="url(#gTape)"/>
+        <rect x="-140" y="396" width="1200" height="4" fill="#fff" opacity=".3"/>
+        <rect x="-140" y="442" width="1200" height="4" fill="#0a1180" opacity=".35"/>
+        <text x="200" y="433">SPONSORED</text><text x="470" y="433">SPONSORED</text>
+      </g>
+      <g transform="rotate(-8 450 650)">
+        <rect x="-140" y="626" width="1200" height="52" fill="url(#gTape)"/>
+        <rect x="-140" y="626" width="1200" height="4" fill="#fff" opacity=".3"/>
+        <rect x="-140" y="674" width="1200" height="4" fill="#0a1180" opacity=".35"/>
+        <text x="-30" y="664">/// SPONSORED</text><text x="290" y="664">/// SPONSORED</text><text x="610" y="664">/// SPONSORED</text>
+      </g>
+      <g transform="rotate(-5 450 750)">
+        <rect x="-140" y="722" width="1200" height="52" fill="url(#gTape)"/>
+        <rect x="-140" y="722" width="1200" height="4" fill="#fff" opacity=".3"/>
+        <rect x="-140" y="770" width="1200" height="4" fill="#0a1180" opacity=".35"/>
+        <text x="-60" y="760">SPONSORED</text><text x="200" y="760">SPONSORED</text><text x="460" y="760">SPONSORED</text><text x="720" y="760">SPONSORED</text>
+      </g>
+    </g></g>
+  </symbol>
+</svg>
+
+<!-- ───────── nav ───────── -->
+<header class="nav" id="nav">
+  <a class="logo" href="#top">Lumen &amp; Co.</a>
+  <nav class="links" aria-label="Primary">
+    <a href="#podcasts">Podcasts</a>
+    <a href="#creators">Creators</a>
+    <a href="#growth">Growth</a>
+    <a href="#about">About</a>
+  </nav>
+  <a class="btn sm" href="#about">Book a call
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</header>
+
+<main id="top">
+
+  <!-- Stage 1: hero → dark card fly-through -->
+  <section class="pin1" id="podcasts">
+    <div class="stage s1" id="s1">
+      <div class="hero-ui" id="heroUI">
+        <div class="hero-cards" id="heroCards"></div>
+        <div class="statue"><svg viewBox="0 0 900 820" role="img" aria-label="Statue wrapped in sponsored tape"><use href="#bust"/></svg></div>
+        <div class="hero-copy">
+          <h1>Grow shows into<br>loyal <em>audiences.</em></h1>
+          <p>Strategy, creative and promotion for podcasts and creators who want to go further.</p>
+          <a class="btn" href="#about">Book a call
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 140 140">
+            <defs><path id="ringPath" d="M70 70m-52 0a52 52 0 1 1 104 0a52 52 0 1 1-104 0"/></defs>
+            <g class="ring"><text><textPath href="#ringPath" startOffset="0" textLength="322" lengthAdjust="spacing">LUMEN &amp; CO. · MADE FOR LOUDER SHOWS ·</textPath></text></g>
+            <path d="M70 52c2.4 11 6.8 15.6 18 18-11.2 2.4-15.6 7-18 18-2.4-11-6.8-15.6-18-18 11.2-2.4 15.6-7 18-18Z" fill="#0B1030"/>
+          </svg>
+        </div>
+      </div>
+      <div class="fly" id="fly"></div>
+    </div>
+  </section>
+
+  <!-- Stage 2: headline sweep + 3D stat box -->
+  <section class="pin2" id="creators">
+    <div class="stage s2">
+      <div class="marquee" id="marquee"><em>charts</em> climb and grow every week</div>
+      <div class="scene">
+        <div class="box" id="box">
+          <div class="face f-front">
+            <small>Total downloads</small>
+            <b><span id="count">320K</span><span>+</span></b>
+            <svg class="mic" viewBox="0 0 200 320"><use href="#mic"/></svg>
+          </div>
+          <div class="face f-left"><svg viewBox="0 0 900 820"><use href="#bust"/></svg><span>by Lumen &amp; Co.</span></div>
+          <div class="face f-right"></div>
+          <div class="face f-back"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stage 3: the path -->
+  <section class="process" id="growth">
+    <div class="p-inner" id="pInner">
+      <svg class="curve" viewBox="0 0 1600 1700" preserveAspectRatio="none" aria-hidden="true">
+        <path id="pathGhost" class="ghost" d="M-60 160C300 110 620 70 980 130C1420 205 1540 470 1180 640C900 770 360 780 250 1050C160 1280 520 1480 1000 1500C1300 1510 1500 1470 1700 1430"/>
+        <path id="pathMain" d="M-60 160C300 110 620 70 980 130C1420 205 1540 470 1180 640C900 770 360 780 250 1050C160 1280 520 1480 1000 1500C1300 1510 1500 1470 1700 1430"/>
+      </svg>
+      <div class="node" data-i="0">01</div><div class="step" data-i="0"><h3>Listen</h3><p>We dig into your show, your listeners and your goals before touching a thing.</p></div>
+      <div class="node" data-i="1">02</div><div class="step r" data-i="1"><h3>Shape</h3><p>Positioning, artwork and a launch plan built around what makes your show worth hearing.</p></div>
+      <div class="node" data-i="2">03</div><div class="step r" data-i="2"><h3>Launch</h3><p>Paid, social and cross-promo campaigns put each episode in front of the right ears.</p></div>
+      <div class="node" data-i="3">04</div><div class="step" data-i="3"><h3>Grow</h3><p>Weekly reports, fast tests and steady tweaks keep the charts climbing.</p></div>
+      <div class="p-foot" id="about">© Lumen &amp; Co. Podcast growth studio.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  const seg = (p, a, b) => clamp((p - a) / (b - a));
+  const root = document.documentElement;
+
+  /* ───── card templates ───── */
+  const bars = (n, hs) => Array.from({ length: n }, (_, i) =>
+    `<i style="height:${hs ? hs[i % hs.length] : 20 + Math.abs(Math.sin(i * 1.7) * 70) + (i % 5 === 0 ? 10 : 0)}%"></i>`).join('');
+  const smallWave = '<div class="mini-wave">' + bars(7, [30, 70, 100, 55, 85, 40, 20]).replace(/<i /g, '<i style="width:calc(var(--cw)*.012)" ') + '</div>';
+  const T = {
+    mic:     () => `<div class="card c-navy c-mic"><svg class="art mic" viewBox="0 0 200 320"><use href="#mic"/></svg><div class="shine"></div></div>`,
+    onair:   () => `<div class="card c-blue c-onair"><div class="t">On<br>Air</div><div class="desk"></div><svg class="art mic" viewBox="0 0 200 320"><use href="#mic"/></svg><div class="shine"></div></div>`,
+    mountain:() => `<div class="card c-sky"><svg class="sky-svg" viewBox="0 0 100 125" preserveAspectRatio="xMidYMid slice"><ellipse cx="24" cy="26" rx="26" ry="7" fill="#fff" opacity=".7"/><ellipse cx="70" cy="40" rx="30" ry="6" fill="#fff" opacity=".55"/><path d="M0 125V78l20-26 14 18 24-40 42 52v43Z" fill="#6572d9"/><path d="M0 125V96l26-22 20 18 24-24 30 30v27Z" fill="#3946c9"/><path d="M0 125v-14l30-14 30 12 40-14v30Z" fill="#232da8"/></svg></div>`,
+    woman:   () => `<div class="card c-woman"><svg class="art woman" viewBox="0 0 200 260"><use href="#woman"/></svg><svg class="art mic" viewBox="0 0 200 320"><use href="#mic"/></svg><div class="shine"></div></div>`,
+    ideas:   () => `<div class="card c-blue c-ideas"><div class="t">Ideas<br>in public</div><svg class="art woman" viewBox="0 0 200 260"><use href="#woman"/></svg>${smallWave}</div>`,
+    small:   () => `<div class="card c-navy c-small"><div class="t">Small<br>shows<br>big<br>dreams</div><div class="wave">${bars(28)}</div></div>`,
+    creator: () => `<div class="card c-peri c-creator"><div class="t">Creator<br>talks</div><svg class="art mic" viewBox="0 0 200 320"><use href="#mic"/></svg>${smallWave}<div class="shine"></div></div>`
+  };
+  const mk = type => { const d = document.createElement('div'); d.innerHTML = T[type](); return d.firstElementChild; };
+
+  /* hero card ribbon */
+  const order = ['mic', 'onair', 'mountain', 'woman', 'ideas', 'small', 'creator', 'onair', 'woman', 'mic', 'mountain', 'creator', 'small', 'ideas'];
+  const heroCards = order.map(t => { const c = mk(t); $('#heroCards').appendChild(c); return c; });
+
+  /* dark-phase fly cards: x (vw), start y (vh), speed, scale, rotation */
+  const flyDefs = [
+    ['creator', 31, 86, 1.00, 1.05, -4], ['small', 47, 128, 1.30, 1.0, 3], ['woman', 83, 172, 1.55, 1.1, -3],
+    ['onair', 10, 150, 1.40, .95, 5], ['mountain', 64, 100, 1.05, .8, 4], ['ideas', 22, 232, 1.85, 1.15, -5],
+    ['mic', 72, 262, 2.0, 1.0, 3], ['small', 90, 60, .95, .7, -6], ['creator', 52, 280, 2.2, 1.1, 2], ['woman', 38, 205, 1.7, .85, -2]
+  ].map(([t, x, y, sp, s, r]) => { const el = mk(t); $('#fly').appendChild(el); return { el, x, y, sp, s, r }; });
+
+  /* ───── sizes ───── */
+  let vw = innerWidth, vh = innerHeight, cw = 200, step = 230, marqueeW = 3000;
+  const marquee = $('#marquee');
+  const measure = () => {
+    vw = innerWidth; vh = innerHeight;
+    cw = heroCards[0].offsetWidth; step = cw * 1.14;
+    marqueeW = marquee.scrollWidth;
+  };
+  addEventListener('resize', measure);
+  measure();
+  (document.fonts && document.fonts.ready || Promise.resolve()).then(measure);
+
+  /* ───── process path ───── */
+  const pathMain = $('#pathMain');
+  const L = pathMain.getTotalLength();
+  pathMain.style.strokeDasharray = L;
+  pathMain.style.strokeDashoffset = L;
+  const nodeFr = [0.115, 0.345, 0.545, 0.80];
+  const stepCfg = [                    // side, dx, dy in viewBox units
+    { side: 'l', dx: -20, dy: 70 },
+    { side: 'r', dx: -230, dy: 40 },
+    { side: 'r', dx: 70, dy: -250 },
+    { side: 'l', dx: -540, dy: -270 }
+  ];
+  const nodes = [...document.querySelectorAll('.node')], steps = [...document.querySelectorAll('.step')];
+  const pts = nodeFr.map(f => pathMain.getPointAtLength(L * f));
+  pts.forEach((p, i) => {
+    nodes[i].style.left = (p.x / 16) + '%'; nodes[i].style.top = (p.y / 17) + '%';
+    const c = stepCfg[i], s = steps[i];
+    s.style.top = ((p.y + c.dy) / 17) + '%';
+    if (c.side === 'l') s.style.left = ((p.x + c.dx) / 16) + '%';
+    else s.style.right = ((1600 - (p.x + c.dx)) / 16) + '%';
+  });
+
+  /* ───── nav behaviour ───── */
+  const nav = $('#nav'); let lastY = scrollY;
+  const navTick = () => {
+    const y = scrollY;
+    nav.classList.toggle('solid', y > 60);
+    if (y > 120 && y > lastY + 4) nav.classList.add('hide');
+    else if (y < lastY - 4 || y < 120) nav.classList.remove('hide');
+    lastY = y;
+  };
+  addEventListener('scroll', navTick, { passive: true });
+
+  /* ───── main loop ───── */
+  const heroUI = $('#heroUI'), s1 = $('#s1'), fly = $('#fly'), box = $('#box'), count = $('#count'), scene = $('.scene');
+  const pin1 = $('.pin1'), pin2 = $('.pin2'), proc = $('#pInner');
+  const DARK = [13, 16, 25], LIGHT = [242, 244, 249];
+  let off = 0, prev = performance.now(), p1 = 0;
+
+  function frame(now) {
+    const dt = Math.min(64, now - prev); prev = now;
+    off += dt * 0.024;
+
+    /* stage 1 */
+    const r1 = pin1.getBoundingClientRect();
+    p1 = clamp(-r1.top / (r1.height - vh));
+    const heroOut = ease(seg(p1, .12, .36));
+    const dk = ease(seg(p1, .12, .4)) - ease(seg(p1, .72, .95));
+    const col = DARK.map((d, i) => Math.round(lerp(LIGHT[i], d, clamp(dk))));
+    const rgb = `rgb(${col[0]},${col[1]},${col[2]})`;
+    s1.style.background = rgb;
+    root.style.setProperty('--bg', rgb);
+    root.style.setProperty('--dark', clamp(dk).toFixed(3));
+    heroUI.style.opacity = 1 - heroOut;
+    heroUI.style.transform = `translate3d(0,${-heroOut * 5}vh,0) scale(${1 + heroOut * .05})`;
+    heroUI.style.visibility = heroOut >= 1 ? 'hidden' : 'visible';
+
+    if (heroOut < 1) {
+      const total = heroCards.length * step, baseY = vh * .37;
+      const scrollPush = p1 * 900;
+      heroCards.forEach((c, i) => {
+        let x = ((i * step - off - scrollPush + 1000000 * total) % total) - step * 1.2 + (step - 100);
+        const u = (x + cw / 2) / vw;
+        const rot = clamp((u - .5) * 38, -18, 24);
+        const arc = clamp(1 - Math.pow((u - .58) / .62, 2), 0, 1);
+        const y = baseY + arc * vh * .055;
+        c.style.transform = `translate3d(${x}px,${y}px,0) rotate(${rot}deg)`;
+      });
+    }
+
+    const q = seg(p1, .26, .9);
+    const fa = ease(seg(p1, .28, .4)) * (1 - ease(seg(p1, .8, .95)));
+    fly.style.opacity = fa;
+    if (fa > 0) {
+      flyDefs.forEach((f, i) => {
+        const y = (f.y - f.sp * q * 135) / 100 * vh;
+        const x = f.x / 100 * vw + Math.sin(q * 4 + i) * 10;
+        const fw = f.el.offsetWidth;
+        f.el.style.transform = `translate3d(${x - fw / 2}px,${y}px,0) rotate(${f.r}deg) scale(${f.s})`;
+      });
+    }
+
+    /* stage 2 */
+    const r2 = pin2.getBoundingClientRect();
+    const p2 = clamp(-r2.top / (r2.height - vh));
+    marquee.style.transform = `translate3d(${lerp(vw * .95, -marqueeW + vw * .06, p2)}px,-50%,0)`;
+    const ap = ease(seg(p2, 0, .14));
+    const ang = p2 < .3 ? lerp(72, 24, ease(seg(p2, 0, .3))) : lerp(24, 6, ease(seg(p2, .3, 1)));
+    const sc = lerp(.6, 1, ap) + seg(p2, .6, 1) * .12;
+    scene.style.opacity = ap;
+    box.style.transform = `rotateX(${lerp(-10, -3, p2)}deg) rotateY(${ang}deg) scale(${sc})`;
+    count.textContent = Math.round(320 * ease(seg(p2, .02, .3))) + 'K';
+
+    /* stage 3 */
+    const r3 = proc.getBoundingClientRect();
+    const pr = clamp((vh * .78 - r3.top) / (r3.height * .86));
+    const drawn = pr * L;
+    pathMain.style.strokeDashoffset = L - drawn;
+    nodeFr.forEach((f, i) => {
+      const on = drawn >= L * f - 30;
+      nodes[i].classList.toggle('on', on);
+      steps[i].classList.toggle('on', drawn >= L * f + 20);
+    });
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  navTick();
+})();
+</script>
+</body>
+</html>

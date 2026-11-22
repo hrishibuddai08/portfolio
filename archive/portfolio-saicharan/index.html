@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saicharan Reddy — Creative Developer</title>
+  <meta name="description" content="Portfolio of Saicharan Reddy — creative developer building bold, fast, real-time 3D websites.">
+  <meta name="theme-color" content="#151515">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff4711'/%3E%3Cpath d='M32 10l5 17 17 5-17 5-5 17-5-17-17-5 17-5z' fill='%23151515'/%3E%3C/svg%3E">
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"><span></span></div>
+  </div>
+
+  <!-- preloader: paper tears open -->
+  <div class="pre" id="pre">
+    <div class="pre__half pre__half--top"><svg class="torn" data-torn="bottom" data-h="90" data-amp="34" data-seed="11" style="color:#151515;--fiber:#3a3a3a"></svg></div>
+    <div class="pre__half pre__half--bot"><svg class="torn" data-torn="top" data-h="90" data-amp="34" data-seed="23" style="color:#151515;--fiber:#3a3a3a"></svg></div>
+    <div class="pre__center">
+      <div class="pre__count"><span id="preCount">000</span><i>%</i></div>
+      <div class="pre__label">Saicharan Reddy ✺ Portfolio 2026</div>
+    </div>
+  </div>
+
+  <!-- floating nav -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" data-cursor="TOP">SR<sup>®</sup></a>
+    <nav class="nav__links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#lab">3D Lab</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav__cta">Get in touch <b>↗</b></a>
+  </header>
+
+  <main>
+    <div class="topbar">
+      <span>Creative Developer</span>
+      <span>©2026</span>
+      <span>By Saicharan Reddy</span>
+    </div>
+
+    <!-- ═════════ HERO ═════════ -->
+    <section class="hero" id="top">
+      <div class="hero__stage">
+        <svg class="torn hero__paper" data-torn="both" data-h="520" data-amp="30" data-seed="5" style="color:var(--orange);--fiber:#ffb391"></svg>
+        <div class="hero__title" id="heroTitle">
+          <span class="hl" data-speed="-40">THE</span>
+          <span class="hl" data-speed="0">CREATIVE</span>
+          <span class="hl" data-speed="40">DEVELOPER</span>
+        </div>
+        <div class="hero__label hero__label--l">Portfolio <i class="star">✺</i></div>
+        <div class="hero__label hero__label--r"><i class="star">✺</i> WebGL / Motion</div>
+        <div class="anchor anchor--hero" data-anchor="hero"></div>
+      </div>
+    </section>
+
+    <!-- ═════════ INTRO TEXT ═════════ -->
+    <section class="intro">
+      <p class="intro__text" id="introText">I build immersive, fast and bold websites where design meets code. Real-time 3D, smooth motion and clean engineering for brands that want to stand out and visitors who stay a little longer.</p>
+      <div class="intro__cols">
+        <div class="intro__col">
+          <div class="intro__tag"><i class="star">✺</i> Focus:</div>
+          <p>Design-led front-end development — interfaces that feel crafted, move with intent and run smoothly on every device.</p>
+        </div>
+        <div class="intro__col">
+          <div class="intro__tag"><i class="star">✺</i> Approach:</div>
+          <p>Bold layouts, tactile animation and real-time 3D, built with Three.js and GSAP, tuned for performance and accessibility.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ FRAME: mission + about ═════════ -->
+    <div class="frame">
+      <section class="mission" id="mission">
+        <div class="mini">
+          <div class="mini__brand"><span class="mini__logo">SR</span> Saicharan Reddy</div>
+          <div class="mini__lang"><a>EN</a><a>—</a></div>
+          <div class="mini__cols">
+            <a href="#about">About me <i>↗</i></a><a href="#work">Work <i>↗</i></a><a href="#lab">3D Lab <i>↗</i></a>
+          </div>
+          <div class="mini__cols">
+            <a href="#">Awards <i>↗</i></a><a href="#">Journal <i>↗</i></a><a href="#">Stack <i>↗</i></a>
+          </div>
+          <a href="#contact" class="mini__cta">Get in touch <i>↗</i></a>
+        </div>
+
+        <div class="mission__body">
+          <div class="mission__reg">®</div>
+          <p class="mission__copy">My mission is creating world-class websites where beauty meets art of sales. Why not to have both?</p>
+          <div class="mission__words">
+            <div class="mask mw mw--top"><span class="rv">CREATIVE</span></div>
+            <div class="mw__row">
+              <div class="mask"><span class="rv mw--white">SAICHARAN</span></div>
+              <div class="anchor anchor--coin" data-anchor="coin"></div>
+              <div class="mask"><span class="rv mw--orange">DEVELOPER</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission__foot">
+          <div class="scroll"><i class="mouse"></i> Scroll down</div>
+          <a href="#work" class="pill" data-cursor="GO">Explore more <b>↘</b></a>
+          <div class="mission__meta">Local time — <span id="clock">--:--</span></div>
+          <div class="mission__meta">© 2026 — All rights reserved</div>
+        </div>
+      </section>
+
+      <div class="divider" aria-hidden="true">
+        <svg class="torn torn--back" data-torn="top" data-h="90" data-amp="22" data-seed="8" style="color:var(--orange);--fiber:#ffb391"></svg>
+        <svg class="torn torn--front" data-torn="top" data-h="60" data-amp="26" data-seed="19" style="color:#1b1b1b;--fiber:#3d3d3d"></svg>
+      </div>
+
+      <section class="about" id="about">
+        <div class="about__label"><i class="star">✺</i> About me</div>
+        <div class="about__vertical">PORTFOLIO 2026</div>
+
+        <div class="about__words">
+          <div class="mask"><span class="rv ab--orange">YOUR</span></div>
+          <div class="anchor anchor--compass" data-anchor="compass"></div>
+          <div class="mask"><span class="rv ab--orange">CREATIVE</span></div>
+          <div class="mask"><span class="rv ab--orange">PARTNER</span></div>
+          <div class="mask"><span class="rv ab--white">FOR THE WEB</span></div>
+        </div>
+
+        <div class="tape tape--a"><div class="tape__in"><span>CREATIVE PARTNER ✺ CREATIVE PARTNER ✺ CREATIVE PARTNER ✺ CREATIVE PARTNER ✺ </span></div></div>
+        <div class="tape tape--b"><div class="tape__in"><span>AVAILABLE FOR WORK ✺ AVAILABLE FOR WORK ✺ AVAILABLE FOR WORK ✺ </span></div></div>
+
+        <p class="about__small">I'm open for collaborations — working with brands, agencies and studios, plugging into existing design and engineering teams as a reliable accelerator.</p>
+        <p class="about__right">I care about the details that make a site feel alive: the way a page tears open, how a scroll eases, why a 3D object catches the light. Crafting digital products that are as fast as they are memorable.</p>
+        <a href="#work" class="pill about__btn" data-cursor="GO">About me <b>↘</b></a>
+      </section>
+    </div>
+
+    <!-- ═════════ WORK ═════════ -->
+    <section class="work" id="work">
+      <svg class="torn work__torn" data-torn="both" data-h="70" data-amp="20" data-seed="14" style="color:var(--orange);--fiber:#ffb391"></svg>
+      <header class="work__head">
+        <h2 class="mask"><span class="rv">SELECTED <em>WORK</em></span></h2>
+        <p>A handful of recent builds — hover to peek, click to dive in.<br><small>(Placeholder projects — swap in your own.)</small></p>
+      </header>
+      <ul class="work__list" id="workList"></ul>
+      <a href="#contact" class="pill work__all" data-cursor="GO">All projects <b>↘</b></a>
+    </section>
+
+    <div class="preview" id="preview" aria-hidden="true"><div class="preview__in" id="previewIn"></div></div>
+
+    <!-- ═════════ 3D LAB ═════════ -->
+    <section class="lab" id="lab">
+      <div class="lab__head">
+        <div class="about__label"><i class="star">✺</i> Real-time 3D lab</div>
+        <h2 class="mask"><span class="rv">PLAY WITH <em>IT</em></span></h2>
+      </div>
+      <div class="lab__stage">
+        <div class="anchor anchor--lab" data-anchor="lab" data-cursor="DRAG"></div>
+        <div class="lab__hint">Drag to rotate ✺ Live WebGL</div>
+      </div>
+      <div class="lab__ctrl" role="group" aria-label="Choose a 3D shape">
+        <button class="chip is-on" data-shape="knot">Knot</button>
+        <button class="chip" data-shape="gem">Gem</button>
+        <button class="chip" data-shape="ring">Ring</button>
+        <button class="chip" data-shape="coin">Coin</button>
+      </div>
+    </section>
+
+    <!-- ═════════ MARQUEE TAPE ═════════ -->
+    <section class="strip" aria-label="Tools">
+      <div class="strip__tape">
+        <div class="strip__track">
+          <span>WEBGL ✺ THREE.JS ✺ GSAP ✺ REACT ✺ SHADERS ✺ MOTION ✺ UI/UX ✺ PERFORMANCE ✺ WEBGL ✺ THREE.JS ✺ GSAP ✺ REACT ✺ SHADERS ✺ MOTION ✺ UI/UX ✺ PERFORMANCE ✺ </span>
+          <span aria-hidden="true">WEBGL ✺ THREE.JS ✺ GSAP ✺ REACT ✺ SHADERS ✺ MOTION ✺ UI/UX ✺ PERFORMANCE ✺ WEBGL ✺ THREE.JS ✺ GSAP ✺ REACT ✺ SHADERS ✺ MOTION ✺ UI/UX ✺ PERFORMANCE ✺ </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ CONTACT ═════════ -->
+    <section class="contact" id="contact">
+      <svg class="torn contact__torn" data-torn="top" data-h="120" data-amp="50" data-seed="31" style="color:var(--orange);--fiber:#ffb391"></svg>
+      <div class="contact__body">
+        <p class="contact__kicker"><i class="star">✺</i> Got a project?</p>
+        <h2 class="contact__title">
+          <span class="mask"><span class="rv">LET'S BUILD</span></span>
+          <span class="mask"><span class="rv">SOMETHING</span></span>
+          <span class="mask"><span class="rv">LOUD.</span></span>
+        </h2>
+        <div class="contact__row">
+          <a class="contact__mail" href="mailto:hello@example.com" data-cursor="MAIL">hello@example.com</a>
+          <a class="contact__btn magnetic" href="mailto:hello@example.com" data-cursor="HI"><span>Say hello</span></a>
+        </div>
+        <footer class="foot">
+          <span>© 2026 Saicharan Reddy</span>
+          <span class="foot__links"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">X / Twitter</a><a href="#">Dribbble</a></span>
+          <a href="#top" class="foot__top" data-cursor="TOP">Back to top ↑</a>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
